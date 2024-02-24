@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEST CODE</title>
+  <link rel="stylesheet" href="./CSS/bootstrap.min.css">
+  <link rel="stylesheet" href="./CSS/all.min.css">
+  <link rel="stylesheet" href="./CSS/index.css">
+</head>
+
+
+<body class="bg-dark text-white">
+
+  <div class="container py-5 px-3">
+
+    <div class="row my-3" id="shiftInfo">
+
+      <div class="col-11 mx-auto py-3 border border-5 border-primary rounded-3">
+
+        <div class="row w-100 mx-auto">
+
+          <div class="col-md-6 my-3">
+
+            <h4>Employee :</h4>
+  
+            <select id="employeeName" onchange="selectEmployee(this.value)" name="employeeName" id="employeeName" class="form-control">
+                    <option value="Samah" selected> Samah   </option>
+                    <option value="Aya"           > Aya     </option>
+                    <option value="Dalia"         > Dalia   </option>
+            </select>
+  
+          </div>
+  
+          <div class="col-md-6 my-3">
+  
+            <h4>Monthly Salary :</h4>
+  
+            <div class=" d-flex align-items-center">
+              <input id="monthlySalary" type="number" class="form-control">
+              <input id="salaryType" style="transform: scale(2.5);" onchange="calcFinalPrice()" type="checkbox" value="weeklySalary" class="ms-3 me-2">
+            </div>
+  
+          </div>
+  
+          <div class="col-md-6 my-3">
+  
+            <h3 class="me-3">Shift Start :</h3>
+  
+            <input id="shiftStart" type="time" class="form-control">
+  
+          </div>
+  
+          <div class="col-md-6 my-3">
+  
+            <h3 class="me-3">Shift End :</h3>
+  
+            <input id="shiftEnd" type="time" class="form-control">
+  
+          </div>
+
+        </div>
+      
+      </div>
+
+    </div>
+    
+    <!------------------------------------------------------------>
+
+    <div class="row my-5" id="Days">
+
+      <div class="col-11 mx-auto border border-5 border-primary rounded-3 pb-3">
+
+        <div class="row">
+
+          <div class="col-12 mb-3 bg-primary">
+
+            <div class="row py-2">
+
+              <div class="col-7 col-md-3  d-flex justify-content-center align-items-center">
+  
+                <th><i class="fa-regular fa-calendar-days fs-3 me-3"></i></th>
+
+                <input id="dateOfDay" onchange="displayInfo(),restoreBTN()" type="date" class="form-control">
+              
+              </div>
+      
+              <div class="col-5 col-md-9 d-flex justify-content-center align-items-center">
+      
+                <div class="d-flex flex-column justify-content-center align-items-center mx-2">
+                  <i class="fa-solid fa-check mb-2"></i>
+                  <input type="radio" name="status" id="normal" value="Normal" checked="checked"/>  
+                </div>
+      
+                <div class="d-flex flex-column justify-content-center align-items-center mx-2">
+                  <i class="fa-solid fa-mug-hot mb-2"></i>
+                  <input type="radio" name="status" id="holiday" value="Holiday"/>  
+                </div>          
+                 
+                <div class="d-flex flex-column justify-content-center align-items-center mx-2">
+                  <i class="fa-solid fa-battery-quarter mb-2"></i>
+                  <input type="radio" name="status" id="QuarterDayOff" value="Quarter Off" />  
+                </div> 
+
+                <div class="d-flex flex-column justify-content-center align-items-center mx-2">
+                  <i class="fa-solid fa-battery-half mb-2"></i>
+                  <input type="radio" name="status" id="halfDayOff" value="Half Off" />  
+                </div>          
+      
+                <div class="d-flex flex-column justify-content-center align-items-center mx-2">
+                  <i class="fa-solid fa-battery-empty mb-2"></i>                  
+                  <input type="radio" name="status" id="fullDayOff" value="Day Off" />  
+                </div>
+                
+
+              </div>
+  
+
+            </div>
+          
+          </div>
+
+          <div class="col-12 col-lg-3 my-2 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-arrow-right-to-bracket fs-3 me-3"></i>
+            <input id="userLogin" type="time" class="form-control">
+          </div>
+  
+          <div class="col-12 col-lg-3 my-2 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-arrow-right-from-bracket fs-3 me-3"></i>
+            <input id="userLogout" type="time" class="form-control">
+          </div>
+  
+          <div class="col-12 col-lg-3 my-2 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-hand-holding-dollar fs-3 me-3"></i>
+            <input id="dailyLoans" type="number" class="form-control">
+          </div>
+  
+          <div class="col-12 col-lg-3 my-2 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-coins fs-3 me-3"></i>            
+            <input id="dailyCoins" type="number" class="form-control">
+          </div>
+  
+          
+
+        </div>
+
+      </div>
+
+      <button id="addDayBTN" type="button" onclick="calcAndAddDay()" class="col-10 col-md-6 btn btn-primary mx-auto mt-3">Add Day</button>
+
+    </div>
+
+    <!------------------------------------------------------------>
+
+    <div class="row my-5" id="tableData">
+
+      <div class="col-11 mx-auto overflow-auto">
+
+        <table class="table text-white text-center">
+
+            <thead class="text-info">
+
+                <th><i class="fa-solid fa-signature fs-3"></i></th>
+
+                <th><i class="fa-regular fa-calendar-days fs-3"></i></th>
+
+                <th><i class="fa-solid fa-arrow-right-to-bracket fs-3"></i></th>
+
+                <th><i class="fa-solid fa-arrow-right-from-bracket fs-3"></i></th>
+
+                <th><div class="d-flex justify-content-center align-items-center"><i class="fa-regular fa-clock fs-3 me-1"></i><i class="fa-solid fa-arrow-down fs-3"></i></div></th>
+
+                <th><div class="d-flex justify-content-center align-items-center"><i class="fa-regular fa-clock fs-3 me-1"></i><i class="fa-solid fa-arrow-up fs-3"></i></div></th>
+
+                <th><i class="fa-solid fa-hand-holding-dollar fs-3"></i></th>
+                
+                <th><i class="fa-solid fa-coins fs-3"></i></th>
+
+                <th><i class="fa-solid fa-user-minus fs-3"></i></th>
+
+                <th><i class="fa-solid fa-user-plus fs-3"></i></th>
+
+                <th><i class="fa-solid fa-trash-can fs-3"></i></th>
+
+
+            </thead>
+
+            <tbody id="tableData1">
+
+              
+
+            </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+    <div class="row my-3" id="displayInfo">
+
+      
+
+    </div>
+   
+    <!------------------------------------------------------------>
+
+
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="./JS/bootstrap.bundle.min.js"></script>
+  <script src="./JS/jquery-3.6.3.min.js"></script>
+  <script src="./JS/index.js"></script>
+
+</body>
+
+</html>
