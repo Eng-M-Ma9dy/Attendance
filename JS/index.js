@@ -63,15 +63,15 @@ function selectEmployee(name){
     const currentDate = new Date();
 
     document.getElementById('')
-    if (name === 'Samah') {
+    if (name === 'Mohamed') {
         monthlySalary.value        = 8000
         shiftStart.value           = '13:00'
         shiftEnd.value             = '23:00'
-    }else if (name === 'Aya') {
+    }else if (name === 'Ahmed') {
         monthlySalary.value        = 5000
         shiftStart.value           = '11:00'
         shiftEnd.value             = '21:00'
-    }else if (name === 'Dalia') {
+    }else if (name === 'Omr') {
         monthlySalary.value        = 2500
         shiftStart.value           = '11:00'
         shiftEnd.value             = '21:00'
